@@ -1,0 +1,86 @@
+<div class="wrapper">
+    <div class="page-header page-header-small">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8"
+            style="background-image: url('assets/img/35.jpg');">
+        </div>
+
+    </div>
+    <div class="section section-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                    <h2 class="title">Want to work with us?</h2>
+                    <p class="description">Your project is very important to us.</p>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="container register">
+           
+
+            <div class="row">
+                <div  class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <h3 class="register-heading"><i class="fa fa-user-o"></i> Add New Claim</h3>
+    
+                            <form #claimform="ngForm" (ngSubmit)="addNewClaim()">
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <label>title : <b style="color:red;">*</b></label>
+                                        <input type="text" class="form-control" placeholder="enter title" name="title"
+                                            [(ngModel)]="ClaimObj.title" required #title="ngModel"
+                                            [class.is-invalid]="title.invalid && title.touched">
+                                        <small class="text-danger" [class.d-none]="title.valid || title.untouched"><b>required
+                                                field</b></small>
+    
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <label>description : <b style="color:red;">*</b></label>
+                                        <input type="text" class="form-control" placeholder="enter description" name="description"
+                                            [(ngModel)]="ClaimObj.description" required #description="ngModel"
+                                            [class.is-invalid]="description.invalid && description.touched">
+                                        <small class="text-danger" [class.d-none]="description.valid || description.untouched"><b>required
+                                                field</b></small>
+    
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <label>dateClaim : <b style="color:red;">*</b></label>
+                                        <input type="text" class="form-control" placeholder="06/07/2017" name="dateClaim"
+                                            [(ngModel)]="ClaimObj.dateClaim" required #dateClaim="ngModel"
+                                            [class.is-invalid]="dateClaim.invalid && dateClaim.touched">
+                                        <small class="text-danger" [class.d-none]="dateClaim.valid || dateClaim.untouched"><b>required
+                                                field</b></small>
+    
+                                    </div>
+    
+    
+                                </div>
+                                <br><br>
+                                <button [disabled]="claimform.form.invalid" type="submit" class="btn btn-primary btn-round btn-white btn-lg"><i
+                                        class="fa fa-plus"></i> Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+   
+    <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Designed And
+                <a target="_blank"></a>. Coded by
+                <a href="https://www.linkedin.com/in/eya-armaoui/" target="_blank">Armaoui Eya</a>.
+            </div>
+        </div>
+    </footer>
+</div>

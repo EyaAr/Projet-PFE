@@ -1,0 +1,149 @@
+<div class="wrapper">
+    <div class="page-header page-header-small">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8"
+            style="background-image: url('assets/img/35.jpg');">
+        </div>
+
+    </div>
+    <div class="section section-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                    <h2 class="title">Want to work with us?</h2>
+                    <p class="description">Your project is very important to us.</p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="row" id="profilecard">
+            <div *ngFor="let manager of profileDetails | async" id="bloodCards">
+                <div class="card-block">
+                    <div class="text"><b class="element" style="margin-left: 6%;"> Name:{{manager.managername}}</b> </div>
+                    <div class="text"><small
+                            style="font-size: smaller; margin-left: 6%; padding: 3px 8px 3px 8px; background-color: rgb(87, 64, 8); border-radius: 10px; font-weight: bold; width: 55%; color: white;">Id:
+                            {{manager.managerid}}</small> </div>
+                    <div class="text"><b class="element" style="margin-left: 6%;"> Adresse:{{manager.adresse}}</b> </div>
+                    <div class="text"><b class="element" style="margin-left: 6%;"> Mobile: {{manager.mobile}}</b> </div>
+                    <div class="text"><b class="element" style="margin-left: 6%;">Gender: {{manager.gender}}</b> </div>
+                    <div class="text"><b class="element" style="margin-left: 6%;">Email: {{manager.email}}</b> </div>
+                    <div class="text"><b class="element" style="margin-left: 6%;">Status: {{manager.status}}</b> </div>
+                    <div class="btndiv" style="align-items: center;"><button class="editbtn" (click)="editProfile()"><i
+                                class="fa fa-edit"></i> edit</button></div>
+                    <small id="message" *ngIf="temp === true"
+                        style="text-align: center; margin-top: 3%; color: green;"><b>Profile Updated Successfully
+                            !!!</b></small>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="container register" id="profileform">
+            <div class="row">
+                <div class="col-md-9 register-right">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h3 class="textual">Update Manager Profile</h3>
+                            <small *ngIf="temp === false"
+                                style="font-weight: bold; margin-left: 25%; text-align: center; color: darkgreen;"><b>Dear
+                                    {{loggedUser}}, update your profile here</b></small>
+                            <small *ngIf="temp === true" style="text-align: center; color: green;"><b>Profile Updated
+                                    Successfully !!!</b></small>
+                            <form #Updateform="ngForm" style="margin-top: -15%;" (ngSubmit)="updateManagerProfile()">
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+        
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Manager Name *"
+                                                name="managername" [(ngModel)]="manager.managername" required
+                                                #managername="ngModel"
+                                                [class.is-invalid]="managername.invalid && managername.touched">
+                                            <small class="text-danger"
+                                                [class.d-none]="managername.valid || managername.untouched"><b>required
+                                                    field</b></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="email address *" name="email"
+                                                [(ngModel)]="manager.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+                                                #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
+                                            <div *ngIf="email.errors && (email.invalid && email.touched)">
+                                                <small class="text-danger" *ngIf="email.errors.required"><b>required
+                                                        field</b></small>
+                                                <small class="text-danger" *ngIf="email.errors.pattern"><b>Invalid email
+                                                        Id</b></small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="gender *" name="gender"
+                                                [(ngModel)]="manager.gender" required #gender="ngModel"
+                                                [class.is-invalid]="gender.invalid && gender.touched">
+                                            <small class="text-danger"
+                                                [class.d-none]="gender.valid || gender.untouched"><b>required field</b></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="tel" maxlength="8" minlength="8" class="form-control"
+                                                placeholder="mobile *" name="mobile" [(ngModel)]="manager.mobile" required
+                                                #mobile="ngModel" [class.is-invalid]="mobile.invalid && mobile.touched">
+                                            <small class="text-danger"
+                                                [class.d-none]="mobile.valid || mobile.untouched"><b>required field</b></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="password *" name="password"
+                                                [(ngModel)]="manager.password" required #password="ngModel"
+                                                [class.is-invalid]="password.invalid && password.touched">
+                                            <div *ngIf="password.errors && password.invalid && password.touched">
+                                                <small class="text-danger" *ngIf="password.errors.required"><b>required
+                                                        field</b></small>
+                                            </div>
+                                            <small style="color: gray; font-size: 10px;">atleast one uppercase, numeric digit,
+                                                lowercase, special character, length of 6-20</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="adresse *" name="adresse"
+                                                [(ngModel)]="manager.adresse" required #adresse="ngModel"
+                                                [class.is-invalid]="adresse.invalid && adresse.touched">
+                                            <small class="text-danger"
+                                                [class.d-none]="adresse.valid || adresse.untouched"><b>required
+                                                    field</b></small>
+                                        </div>
+        
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="confirm password *"
+                                                name="ConfirmPassword" (ngModel)="manager.password" required
+                                                #confirmPassword="ngModel"
+                                                [class.is-invalid]="confirmPassword.invalid && confirmPassword.touched">
+                                            <small class="text-danger"
+                                                [class.d-none]="(confirmPassword.value == confirmPassword.value) || confirmPassword.untouched"><b>password
+                                                    not matched</b></small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button [disabled]="Updateform.form.invalid" type="submit"
+                                    class="btn registerbtn">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+
+
+
+    <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Designed And
+                <a target="_blank"></a>. Coded by
+                <a href="https://www.linkedin.com/in/eya-armaoui/" target="_blank">Armaoui Eya</a>.
+            </div>
+        </div>
+    </footer>
+</div>
+
+
