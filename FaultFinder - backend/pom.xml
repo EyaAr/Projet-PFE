@@ -8,14 +8,13 @@
 		<version>2.5.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>FaultFinder.vermeg</groupId>
-	<artifactId>Backend</artifactId>
-	<version>1.0</version>
-	<name>FaultFinder</name>
+	<groupId>com.application</groupId>
+	<artifactId>ELearningManagement</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ELearningManagement</name>
 	<description>eLearning Management System using Angular 8 &amp; Springboot</description>
 	<properties>
-		<java.version>11</java.version>		
-                <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version> 
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -61,35 +60,12 @@
 	</dependencies>
 
 	<build>
-		
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>2.4.1</version><!--$NO-MVN-MAN-VER$-->
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
-
-			<plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-resources-plugin</artifactId>
-			  <version>3.1.0</version><!--$NO-MVN-MAN-VER$-->
-		    </plugin>
 		</plugins>
-
 	</build>
-<distributionManagement>
-        <repository>
-         <id>deploymentRepo</id>
-         <name>admin</name>
-        <url>http://192.168.33.10:8081/repository/maven-releases/</url>
-       </repository>
-      </distributionManagement>
+
 </project>
