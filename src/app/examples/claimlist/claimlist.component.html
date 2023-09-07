@@ -1,0 +1,61 @@
+<div class="wrapper">
+    <div class="page-header page-header-small">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8"
+            style="background-image: url('assets/img/35.jpg');">
+        </div>
+
+    </div>
+    <div class="section section-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                    <h2 class="title">Want to work with us?</h2>
+                    <p class="description">Your project is very important to us.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col text-center">
+            <a [routerLink]="['/examples/claim']" class="btn btn-primary btn-round btn-white btn-lg">Add New Claim</a>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div *ngIf="claims">
+                    <div *ngFor="let claim of claims | async" class="col-4 card" id="bloodCards">
+                        <div class="img-block">
+                            <div>
+                                <!--<qr-code [value]=data.url [size]="100"></qr-code>-->
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <br>
+                            <div>title: {{claim.title}} </div>
+                            <div>description: {{claim.description}} </div>
+                            <div>dateClaim: {{claim.dateClaim}} </div>
+
+                            <br><br>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+
+
+    </div>
+
+
+
+    <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Designed And
+                <a target="_blank"></a>. Coded by
+                <a href="https://www.linkedin.com/in/eya-armaoui/" target="_blank">Armaoui Eya</a>.
+            </div>
+        </div>
+    </footer>
+</div>

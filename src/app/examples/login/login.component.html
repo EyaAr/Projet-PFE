@@ -1,0 +1,105 @@
+<div class="page-header" filter-color="orange">
+    <div class="page-header-image" style="background-image:url(assets/img/122.jpg)"></div>
+    <div class="container">
+
+        <div class="col-md-4 content-center">
+            <div class="card card-login card-plain">
+
+                <div class="row">
+                    <div class="col-md-12">
+    
+                        <ngb-tabset [justify]="'center'" type="pills"
+                            class="nav nav-pills nav-pills-primary  nav-pills-just-icons justify-content-center tab-space">
+                            <ngb-tab>
+                                <ng-template ngbTabTitle>
+                                    M
+                                </ng-template>
+                                <ng-template ngbTabContent>
+                                    <form #managerloginform="ngForm" (ngSubmit)="loginManager()">
+                                        <small class="text-danger"><b>{{msg}}</b></small>
+                                        <div class="form-group">
+                                            <label for="email">Manager Email address: <b class="text-danger">*</b></label>
+                                            <input type="email" class="form-control" placeholder="enter email" name="email"
+                                                [(ngModel)]="manager.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+                                                #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
+                                            <div *ngIf="email.errors && email.invalid && email.touched">
+                                                <small class="text-danger" *ngIf="email.errors.required"><b>required field</b></small>
+                                                <small class="text-danger" *ngIf="email.errors.pattern"><b>Invalid email Id</b></small>
+                                            </div>
+                                        </div>
+                        
+                                        <div class="form-group">
+                                            <label for="pwd" style="margin-top: 5px;">Manager Password: <b class="text-danger">*</b></label>
+                                            <input type="password" class="form-control" placeholder="enter password" name="password"
+                                                [(ngModel)]="manager.password" required #password="ngModel"
+                                                [class.is-invalid]="password.invalid && password.touched">
+                                            <div *ngIf="password.errors && password.invalid && password.touched">
+                                                <small class="text-danger" *ngIf="password.errors.required"><b>required field</b></small>
+                                            </div>
+                                            <small style="color: gray; font-size: 10px;">atleast one uppercase, numeric digit, lowercase,
+                                                special
+                                                character, length of 6-20</small>
+                                        </div>
+                        
+                        
+                                        <button [disabled]="managerloginform.form.invalid" type="submit" class="btn loginbtn">Login</button>
+                                    </form>
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab>
+                                <ng-template ngbTabTitle>
+                                  U
+                                </ng-template>
+                                <ng-template ngbTabContent>
+                                    <form #userloginform="ngForm" (ngSubmit)="loginUser()">
+                                        <small class="text-danger"><b>{{msg}}</b></small>
+                                        <div class="form-group">
+                                          <label for="email">User Email address: <b class="text-danger">*</b></label>
+                                          <input type="email" class="form-control" placeholder="enter email" name="email" [(ngModel)]="user.email"
+                                            required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #email="ngModel"
+                                            [class.is-invalid]="email.invalid && email.touched">
+                                          <!--<small class="text-danger" [class.d-none]="email.valid || email.untouched"><b>required field</b></small>-->
+                                          <div *ngIf="email.errors && email.invalid && email.touched">
+                                            <small class="text-danger" *ngIf="email.errors.required"><b>required field</b></small>
+                                            <small class="text-danger" *ngIf="email.errors.pattern"><b>Invalid email Id</b></small>
+                                          </div>
+                                        </div>
+                                
+                                        <div class="form-group">
+                                          <label for="pwd" style="margin-top: 5px;">User Password: <b class="text-danger">*</b></label>
+                                          <input type="password" class="form-control" placeholder="enter password" name="pwd"
+                                            [(ngModel)]="user.password" required #password="ngModel"
+                                            [class.is-invalid]="password.invalid && password.touched">
+                                          <div *ngIf="password.errors && password.invalid && password.touched">
+                                            <small class="text-danger" *ngIf="password.errors.required"><b>required field</b></small>
+                                          </div>
+                                          <small style="color: gray; font-size: 10px;">atleast one uppercase, numeric digit, lowercase, special
+                                            character, length of 6-20</small>
+                                        </div>
+                                
+                                
+                                        <button [disabled]="userloginform.form.invalid" type="submit" class="btn loginbtn">Login</button>
+                                      </form>
+                                </ng-template>
+                            </ngb-tab>
+                        </ngb-tabset>
+                    </div>
+                </div>
+
+
+
+              
+            </div>
+        </div>
+    </div>
+    <footer class="footer" data-background-color="btn-white">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Designed
+                <a target="_blank"></a>And Coded by
+                <a href="https://www.linkedin.com/in/eya-armaoui/" target="_blank">Armaoui Eya</a>.
+            </div>
+        </div>
+    </footer>
+</div>
