@@ -1,0 +1,76 @@
+<app-header></app-header>
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3  class="sidebar-text"><i class="fa fa-user-o"></i> Add New Manager</h3>
+                    <small class="text-danger"><b>{{msg}}</b></small>
+                    <form #managerform="ngForm" (ngSubmit)="addManager()">
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Manager Name : <b style="color:maroon;">*</b></label>
+                                <input type="text" class="form-control" placeholder="enter manager name" name="managername" [(ngModel)]="manager.managername" required 
+                                #managername="ngModel"
+                                [class.is-invalid]="managername.invalid && managername.touched">
+                               <small class="text-danger" [class.d-none]="managername.valid || managername.untouched"><b>required field</b></small>
+                            </div>
+                            <div class="form-group">
+                                <label>Manager email : <b style="color:maroon;">*</b></label>
+                                <input type="email" class="form-control" placeholder="enter email address" name="manageremail" [(ngModel)]="manager.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+                                #manageremail="ngModel"
+                                [class.is-invalid]="manageremail.invalid && manageremail.touched">
+                                <div *ngIf="manageremail.errors && (manageremail.invalid && manageremail.touched)">
+                                    <small class="text-danger" *ngIf="manageremail.errors.required"><b>required field</b></small>
+                                    <small class="text-danger" *ngIf="manageremail.errors.pattern"><b>Invalid email Id</b></small>
+                                  </div>                          
+                            </div>
+                           
+                            <div class="form-group">
+                                <label>Manager Gender : <b style="color:maroon;">*</b></label>
+                                <select class="form-control" id="sel1" placeholder="please mention gender" name="managergender" [(ngModel)]="manager.gender" required
+                                #managergender="ngModel">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Manager Adresse : <b style="color:maroon;">*</b></label>
+                                <input type="text" class="form-control" placeholder="enter manager adresse" name="adresse" [(ngModel)]="manager.adresse" required 
+                                #adresse="ngModel"
+                                [class.is-invalid]="adresse.invalid && adresse.touched">
+                               <small class="text-danger" [class.d-none]="adresse.valid || adresse.untouched"><b>required field</b></small>
+                            </div>
+                            <div class="form-group">
+                                <label>Mobile Number : <b style="color:maroon;">*</b></label>
+                                <input type="tel" maxlength="8" minlength="8" class="form-control" placeholder="enter mobile number" name="managermobile" [(ngModel)]="manager.mobile" required 
+                                #managermobile="ngModel"
+                                [class.is-invalid]="managermobile.invalid && managermobile.touched">
+                               <small class="text-danger" [class.d-none]="managermobile.valid || managermobile.untouched"><b>required field</b></small>
+                            </div>
+                            <div class="form-group">
+                                <label>Password : <b style="color:maroon;">*</b></label>
+                                <input type="password" class="form-control" placeholder="enter password" name="pwd" [(ngModel)]="manager.password" required 
+                                #managerpassword="ngModel"
+                                [class.is-invalid]="managerpassword.invalid && managerpassword.touched">
+                                <div *ngIf="managerpassword.errors && managerpassword.invalid && managerpassword.touched">
+                                  <small class="text-danger" *ngIf="managerpassword.errors.required"><b>required field</b></small>
+                                </div>
+                                <small style="color: maroon; font-size: 10px; font-weight: bold;">Please use the temporary password as "123"</small>
+                                <small style="color: gray; font-size: 10px; font-weight: bold;"> Later Manager can Login and edit his/her password</small>
+                            </div>
+                        </div>
+                       
+                    </div>
+                  
+                    <button [disabled]="managerform.form.invalid" type="submit" class="btnRegister"><i class="fa fa-plus"></i> Add Manager</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>		
+
+<app-footer></app-footer>

@@ -1,0 +1,116 @@
+<div class="wrapper">
+    <div class="page-header page-header-small">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8"
+            style="background-image: url('assets/img/35.jpg');">
+        </div>
+
+    </div>
+    <div class="section section-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                    <h2 class="title">Want to work with us?</h2>
+                    <p class="description">Your project is very important to us.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container register">
+            <div class="row">
+                <div  class="col-lg-6 text-center col-md-8 ">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <h3 class="register-heading"><i class="fa fa-user-o"></i> Add New Company</h3>
+
+                         
+    
+                            <form #companyform="ngForm" (ngSubmit)="addNewCompany()">
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <label>name : <b style="color:red;">*</b></label>
+                                        <input type="text" class="form-control" placeholder="enter name" name="name"
+                                            [(ngModel)]="CompanyObj.name" required #name="ngModel"
+                                            [class.is-invalid]="name.invalid && name.touched">
+                                        <small class="text-danger" [class.d-none]="name.valid || name.untouched"><b>required
+                                                field</b></small>
+    
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <label>adresse : <b style="color:red;">*</b></label>
+                                        <input type="text" class="form-control" placeholder="enter adresse" name="adresse"
+                                            [(ngModel)]="CompanyObj.adresse" required #adresse="ngModel"
+                                            [class.is-invalid]="adresse.invalid && adresse.touched">
+                                        <small class="text-danger"
+                                            [class.d-none]="adresse.valid || adresse.untouched"><b>required
+                                                field</b></small>
+    
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <label>mobile : <b style="color:red;">*</b></label>
+                                        <input type="text" class="form-control" placeholder="enter mobile" name="mobile"
+                                            [(ngModel)]="CompanyObj.mobile" required #mobile="ngModel"
+                                            [class.is-invalid]="mobile.invalid && mobile.touched">
+                                        <small class="text-danger"
+                                            [class.d-none]="mobile.valid || mobile.untouched"><b>required
+                                                field</b></small>
+    
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <label>fax : <b style="color:red;">*</b></label>
+                                        <input type="text" class="form-control" placeholder="enter fax" name="fax"
+                                            [(ngModel)]="CompanyObj.fax" required #fax="ngModel"
+                                            [class.is-invalid]="fax.invalid && fax.touched">
+                                        <small class="text-danger" [class.d-none]="fax.valid || fax.untouched"><b>required
+                                                field</b></small>
+    
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <label>email : <b style="color:red;">*</b></label>
+                                        <input type="text" class="form-control" placeholder="enter email" name="email"
+                                            [(ngModel)]="CompanyObj.email" required #email="ngModel"
+                                            [class.is-invalid]="email.invalid && email.touched">
+                                        <small class="text-danger"
+                                            [class.d-none]="email.valid || email.untouched"><b>required
+                                                field</b></small>
+    
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <label>type : <b style="color:red;">*</b></label>
+                                        <select class="form-control" id="sel1" placeholder="please mention type" name="type"
+                                            [(ngModel)]="CompanyObj.type" required #type="ngModel">
+                                            <option>Banking</option>
+                                            <option>Insurance</option>
+                                            <option>Capital Markets</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br><br>
+                                <button [disabled]="companyform.form.invalid" type="submit" class="btn btn-primary btn-round btn-white btn-lg"><i
+                                        class="fa fa-plus"></i> Add</button>
+                            </form>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+   
+    <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Designed And
+                <a target="_blank"></a>. Coded by
+                <a href="https://www.linkedin.com/in/eya-armaoui/" target="_blank">Armaoui Eya</a>.
+            </div>
+        </div>
+    </footer>
+</div>

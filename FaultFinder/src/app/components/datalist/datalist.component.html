@@ -1,0 +1,79 @@
+<app-header></app-header>
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3 class="register-heading"><i class="fa fa-user-o"></i> Add New Database</h3>
+                    <small class="text-danger"><b>{{msg}}</b></small>
+                    <form #dataform="ngForm" (ngSubmit)="addNewDatabase()">
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <label>URL : <b style="color:red;">*</b></label>
+                                <input type="text" class="form-control" placeholder="enter url" name="url"
+                                    [(ngModel)]="DataObj.url" required #url="ngModel"
+                                    [class.is-invalid]="url.invalid && url.touched">
+                                <small class="text-danger" [class.d-none]="url.valid || url.untouched"><b>required
+                                        field</b></small>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label>username : <b style="color:red;">*</b></label>
+                                <input type="text" class="form-control" placeholder="enter username" name="username"
+                                    [(ngModel)]="DataObj.username" required #username="ngModel"
+                                    [class.is-invalid]="username.invalid && username.touched">
+                                <small class="text-danger"
+                                    [class.d-none]="username.valid || username.untouched"><b>required field</b></small>
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <label>password : <b style="color:red;">*</b></label>
+                                <input type="text" class="form-control" placeholder="enter password" name="password"
+                                    [(ngModel)]="DataObj.password" required #password="ngModel"
+                                    [class.is-invalid]="password.invalid && password.touched">
+                                <small class="text-danger"
+                                    [class.d-none]="password.valid || password.untouched"><b>required field</b></small>
+
+
+                            </div>
+
+                        </div>
+
+                        <button [disabled]="dataform.form.invalid" type="submit" class="btnRegister"><i
+                                class="fa fa-plus"></i> Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="text" style=" text-align: center; margin-top: 10px;"><b style="color: rgb(27, 25, 25);">DataBases List</b>
+</div>
+
+<div class="row">
+    <div *ngFor="let data of datas | async" class="col-4 card" id="bloodCards">
+        <div class="img-block">
+            <div>
+                <!--<qr-code [value]=data.url [size]="100"></qr-code>-->
+            </div>
+        </div>
+        <div class="card-block">
+            <br>
+            <div class="text"><b style="color: maroon;">url: {{data.url}} </b></div>
+            <div class="text"><b style="color: darkblue;">username: {{data.username}} </b></div>
+            <div class="text"><b style="color: maroon;">password: {{data.password}} </b></div>
+            <br><br>
+
+
+        </div>
+
+    </div>
+</div>
+
+<br><br><br>
+<app-footer></app-footer>

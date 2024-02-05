@@ -1,0 +1,40 @@
+<app-header></app-header>
+<h2 style="text-align: center; font-family: 'Oswald', sans-serif;color: maroon; margin-top: 3%; margin-bottom: 4%;">Managers List</h2>
+
+<div class="row">
+    <div *ngFor="let manager of managerlist | async" class="col-4 card" id="bloodCards">
+        <div class="img-block">
+            <div class="circle">
+                <img *ngIf="manager.gender === 'Male' || manager.gender === 'male'" class="bloodimg"
+                    [src]="'assets/img/maleprofessor.png'" width="120" height="120">
+                <img *ngIf="manager.gender === 'Female' || manager.gender === 'female'" class="bloodimg"
+                    [src]="'assets/img/femaleprofessor.png'" width="120" height="120">
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="text"><b style="color:  rgb(96, 0, 0)">manager ID : </b><b style="color: rgb(119, 75, 75);"><small
+                        class="date-cover">{{manager.managerid}}</small></b></div>
+            <div class="text"><b style="color: rgb(96, 0, 0)">manager Name : </b><b style="color:rgb(119, 75, 75);">
+                    {{manager.managername}} </b></div>
+            <div class="text"><b style="color:  rgb(96, 0, 0)">Email : </b><b style="color:rgb(119, 75, 75);"> {{manager.email}} </b>
+            </div>
+            <div class="text"><b style="color:  rgb(96, 0, 0)">adresse : </b><b style="color: rgb(119, 75, 75);"> {{manager.adresse}}
+                </b></div>
+            <div class="text"><b style="color:  rgb(96, 0, 0)">Gender : </b><b style="color: rgb(119, 75, 75);"> {{manager.gender}}
+                </b></div>
+            <div class="text"><b style="color:  rgb(96, 0, 0)">Mobile : </b><b style="color: rgb(119, 75, 75);"> {{manager.mobile}}
+                </b></div>
+            <div *ngIf="manager.status === 'accept'">
+                <div class="status-btn">Approved manager</div>
+            </div>
+            <div *ngIf="manager.status === 'reject'">
+                <div class="status-btn2">Rejected</div>
+            </div>
+            <div *ngIf="manager.status === 'false'">
+                <div class="status-btn1">Approval Pending</div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+<app-footer></app-footer>

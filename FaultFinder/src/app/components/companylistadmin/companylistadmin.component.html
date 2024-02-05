@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+
+<div class="text" style=" text-align: center; margin-top: 10px;"><b style="color: rgb(27, 25, 25);">Companys List</b>
+</div>
+
+<div class="row">
+    <div *ngFor="let company of companys | async" class="col-4 card" id="bloodCards">
+        <div class="img-block">
+            <img [src]="'assets/img/b.gif'" style="margin-left: 35%;" width="150" height="150"><br>
+        </div>
+        <div class="card-block">
+            <div class="text"><b style="color: maroon;">name: {{company.name}} </b></div>
+            <div class="text"><b style="color: darkblue;">adresse: {{company.adresse}} </b></div>
+            <div class="text"><b style="color: maroon;">mobile: {{company.mobile}} </b></div>
+            <div class="text"><b style="color: maroon;">fax: {{company.fax}} </b></div>
+            <div class="text"><b style="color: maroon;">email: {{company.email}} </b></div>
+            <div class="text"><b style="color: maroon;">type: {{company.type}} </b></div>
+            <br>
+            <button class="btn btn-danger" (click)="deleteCompany(+company.id)">Delete</button>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br>
+<app-footer></app-footer>

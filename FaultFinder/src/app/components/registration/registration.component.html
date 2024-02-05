@@ -1,0 +1,92 @@
+<div class="container register">
+    <div class="row">
+        <div class="col-md-9 register-right">
+            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <h3 class="register-heading">Manager Registration</h3>
+                <small class="text-danger"><b>{{msg}}</b></small>
+                <form #managerform="ngForm" (ngSubmit)="registerManager()">
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Manager Name *" name="managername"
+                                    [(ngModel)]="manager.managername" required #managername="ngModel"
+                                    [class.is-invalid]="managername.invalid && managername.touched">
+                                <small class="text-danger"
+                                    [class.d-none]="managername.valid || managername.untouched"><b>required
+                                        field</b></small>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="email address *" name="email"
+                                    [(ngModel)]="manager.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+                                    #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
+                                <div *ngIf="email.errors && (email.invalid && email.touched)">
+                                    <small class="text-danger" *ngIf="email.errors.required"><b>required
+                                            field</b></small>
+                                    <small class="text-danger" *ngIf="email.errors.pattern"><b>Invalid
+                                            email Id</b></small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Manager Gender : <b style="color:red;">*</b></label>
+                                <select class="form-control" id="sel1" placeholder="please mention gender" name="managergender" [(ngModel)]="manager.gender" required
+                                #managergender="ngModel">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" maxlength="8" minlength="8" class="form-control"
+                                    placeholder="mobile *" name="mobile" [(ngModel)]="manager.mobile" required
+                                    #mobile="ngModel" [class.is-invalid]="mobile.invalid && mobile.touched">
+                                <small class="text-danger" [class.d-none]="mobile.valid || mobile.untouched"><b>required
+                                        field</b></small>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="password *" name="pwd"
+                                    [(ngModel)]="manager.password" required #password="ngModel"
+                                    [class.is-invalid]="password.invalid && password.touched">
+                                <div *ngIf="password.errors && password.invalid && password.touched">
+                                    <small class="text-danger" *ngIf="password.errors.required"><b>required
+                                            field</b></small>
+                                </div>
+                                <small style="color: gray; font-size: 10px;">atleast one uppercase, numeric digit,
+                                    lowercase, special character, length of 6-20</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Manager adresse *" name="adresse"
+                                    [(ngModel)]="manager.adresse" required #adresse="ngModel"
+                                    [class.is-invalid]="adresse.invalid && adresse.touched">
+                                <small class="text-danger"
+                                    [class.d-none]="adresse.valid || adresse.untouched"><b>required
+                                        field</b></small>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="confirm password *"
+                                    name="ConfirmPassword" (ngModel)="manager.password" required
+                                    #managerconfirmPassword="ngModel"
+                                    [class.is-invalid]="managerconfirmPassword.invalid && managerconfirmPassword.touched">
+                                <small class="text-danger"
+                                    [class.d-none]="(managerconfirmPassword.value == password.value) || managerconfirmPassword.untouched"><b>password
+                                        not matched</b></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkbox" style="margin-top: -8%; margin-left: 11%;">
+                        <small style="color: gray;"><input type="checkbox" class="checkbox" name="remember" required> I
+                            agree to all Terms & Conditions</small>
+                    </div>
+                    <div
+                        style="margin-top: -3%; margin-left: 58.5%; margin-bottom: 3%; color: rgb(0, 0, 0); font-size: 16px;">
+                        Already have an Account?
+                        <small [routerLink]="['/login']"
+                            style="color: navy; text-align: center; cursor: pointer;"><b>click here</b></small>
+                    </div>
+                    <button [disabled]="managerform.form.invalid" type="submit" class="btnRegister">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

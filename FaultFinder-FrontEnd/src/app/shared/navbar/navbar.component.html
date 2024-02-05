@@ -1,0 +1,89 @@
+
+  <nav class="navbar navbar-expand-lg bg-dark fixed-top navbar-transparent" color-on-scroll="500">
+    <div class="container">
+      <div class="dropdown button-dropdown">
+        <div ngbDropdown>
+          <a class="dropdown-toggle" ngbDropdownToggle>
+            <span class="button-bar"></span>
+            <span class="button-bar"></span>
+            <span class="button-bar"></span>
+          </a>
+          <div ngbDropdownMenu>
+            <a class="dropdown-header"></a>
+            <a [routerLink]="['/examples/landing']" class="dropdown-item">About Us</a>
+            <a [routerLink]="['examples/approvalstatus']" class="dropdown-item">Approval Status</a>
+            <a [routerLink]="['examples/managers-list']" class="dropdown-item">Managers</a>
+            <a [routerLink]="['examples/user-list']" class="dropdown-item">Users</a>
+            <a [routerLink]="['examples/companylist']" class="dropdown-item">Companys</a>
+            <a [routerLink]="['examples/databaselist']" class="dropdown-item">Database</a>
+            <div class="dropdown-divider"></div>
+            <a [routerLink]="['examples/claim']" class="dropdown-item">Claims</a>
+  
+            <div class="dropdown-divider"></div>
+            <a [routerLink]="['examples/informations']" class="dropdown-item">Informations</a>
+            <a [routerLink]="['examples/guide']" class="dropdown-item">Guide</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Navbar Transparent -->
+      <nav class="navbar navbar-expand-lg navbar-transparent">
+        <div class="container">
+          <div class="collapse navbar-collapse" id="example-navbar-transparent">
+            <ul class="navbar-nav ml-auto">
+  
+  
+  
+              <li class="nav-item">
+                <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom"
+                  href="https://twitter.com/vermeg" target="_blank">
+                  <i class="fab fa-twitter"></i>
+                  <p class="d-lg-none d-xl-none">Twitter</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom"
+                  href="https://www.facebook.com/Vermeg" target="_blank">
+                  <i class="fab fa-facebook-square"></i>
+                  <p class="d-lg-none d-xl-none">Facebook</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" rel="tooltip" title="web site" data-placement="bottom" href="https://www.vermeg.com"
+                  target="_blank">
+                  <i class="now-ui-icons objects_globe"></i>
+                  <p class="d-lg-none d-xl-none">web site</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" rel="tooltip" title="Profile" data-placement="bottom" href="examples/manager-profile"
+                 >
+                  <i class="now-ui-icons users_circle-08"></i>
+                  <p class="d-lg-none d-xl-none">Profile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="navbar-brand">
+                  <b class="sidebar-text" style="color: whitesmoke;"><i class="fa fa-user"></i> Welcome {{loggedUser}}</b>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="navbar-brand" (click)="logout()" target="_blank">
+                  <p>Logout</p>
+                </a>
+              </li>
+            
+             
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar Transparent-->
+  
+  
+    </div>
+  </nav>
+
+
+
+

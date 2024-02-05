@@ -1,0 +1,139 @@
+<app-header></app-header>
+
+<div class="sidebar-container">
+  <ul class="sidebar-navigation">
+
+    <div class="card" style="width:235px; background-color: #cc4f4f;">
+      <div id="userimg" style="width:150px;">
+        <img [src]="'assets/img/admin.png'" alt="Card image" style="width:100%">
+      </div>
+      <div style="margin-left: auto; margin-right: auto;" class="card-body">
+        <h4 style="font-weight: bolder;" class="card-title"><b>{{name}}</b></h4>
+      </div>
+    </div>
+
+    <li>
+      <i class="fa fa-plus" aria-hidden="true"></i> <label [routerLink]="['/addManager']" style="cursor: pointer;">Add
+        Manager</label>
+    </li>
+
+    <li>
+      <i class="fa fa-check-square" aria-hidden="true"></i> <label [routerLink]="['/approvemanager']"
+        style="cursor: pointer;">Approve Manager</label>
+    </li>
+
+    <li>
+      <i class="fa fa-user-o" aria-hidden="true"></i> <label [routerLink]="['/managerlist']"
+        style="cursor: pointer;">Managers</label>
+    </li>
+    <li>
+      <i class="fa fa-user" aria-hidden="true"></i> <label [routerLink]="['/userlist']"
+        style="cursor: pointer;">Users</label>
+    </li>
+
+    <li [routerLink]="['/companyListAdmin']">
+      <a>
+        <i class='fa fa-book'></i>
+        <span class="links_name">Companys</span>
+      </a>
+      <span class="tooltip">Companys</span>
+    </li>
+    <li [routerLink]="['/datalistadmin']">
+      <a>
+        <i class='fa fa-book'></i>
+        <span class="links_name">Databases</span>
+      </a>
+      <span class="tooltip">Databases</span>
+    </li>
+    <li>
+      <i class="fa fa-list" aria-hidden="true"></i> <label [routerLink]="['/claimlistadmin']"
+        style="cursor: pointer;">claim List</label>
+    </li>
+  </ul>
+</div>
+<br><br><br><br><br><br><br><br>
+
+
+
+
+
+<div class="container">
+  <div class=" row">
+
+
+
+    <div class="dashboard-card" style="background-color: white; box-shadow: 4px 4px 25px 5px gray;">
+      <h5 class="card-category">Users</h5>
+      <h3 class=" card-title" *ngFor="let users of users | async">{{users}} Users registered</h3>
+      <h5 class="card-category">Managers</h5>
+      <h3 class=" card-title" *ngFor="let managers of managers | async">{{managers}} Managers registered
+      </h3>
+    </div>
+
+    
+
+    <div class="dashboard-card" style="background-color: white; box-shadow: 4px 4px 25px 5px gray;">
+      <h3 class=" card-title" *ngFor="let totalCompany of totalCompany | async">{{totalCompany}} </h3>
+      <h5 class="card-category">Total Companys</h5>
+      <h3 class=" card-title" *ngFor="let totalClaim of totalClaim | async">{{totalClaim}} </h3>
+      <h5 class="card-category">Total Claims</h5>
+      <h3 class=" card-title" *ngFor="let totalData of totalData | async">{{totalData}} </h3>
+      <h5 class="card-category">Total Databases</h5>
+    </div>
+
+  </div>
+
+
+  <br>
+  <div class=" col-lg-6 col-md-12">
+    <div class=" card">
+      <div class=" card-header">
+        <button (click)="printToPDF()" class="rejected">Print to PDF</button>
+
+      </div>
+      <div #contentToPrint>
+        <div class=" card-header">
+          <h4 class="sidebar-text">Claims List</h4>  
+        </div>
+        <div class=" card-body">
+          <div class=" table-responsive">
+
+            <table class=" table tablesorter" id="">
+              <thead >
+                <tr>
+                  <th>Idendity</th>
+                  <th>title</th>
+                  <th>description</th>
+                  <th>date Claim</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let claim of claims | async">
+
+                  <td>{{claim.id}}</td>
+                  <td>{{claim.title}}</td>
+                  <td>{{claim.description}}</td>
+                  <td class=" text-center">{{claim.dateClaim}}</td>
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+   
+    
+  </div>
+
+
+
+  
+
+</div>
+
+<br><br><br><br><br><br><br><br>
+<app-footer></app-footer>

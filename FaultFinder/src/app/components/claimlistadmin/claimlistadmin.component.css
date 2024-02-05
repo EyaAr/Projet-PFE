@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+
+.row
+  {
+    margin-left: 10%;
+    margin-top: 3%;
+  }
+  #bloodCards
+  {
+    margin-right: 5%;
+    margin-bottom: 4%;
+    width: 40%;
+    border-radius: 15px;
+    padding: 0px;
+    transition: transform .2s;
+    box-shadow: 5px 5px 25px 8px rgb(147, 158, 147);
+  }
+  #bloodCards:hover
+  {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+.card-block
+{
+  margin-top: -33%;
+  margin-left: 40%;
+  margin-bottom: 6%;
+}
+.text{
+  font-family: serif;
+  font-size: larger;
+  font-weight: bolder;
+}
+#searchtxt
+{
+  width: 20%;
+  float: right;
+}
+.img-block{
+    width: 40%;
+    height: 180px;
+    border-radius: 15px;
+    background-color: white;
+}
+.circle{
+    background-color: rgb(22, 121, 72);
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    margin-top: 20%;
+    margin-bottom: auto;
+    border-radius: 50%;
+    width: 73%;
+    height: 80%;
+}
+.bloodimg
+{
+    margin-left: 13%;
+    margin-top: 8%;
+}
+.heading-text
+{
+    font-weight: bolder;
+    font-size: 40px;
+    margin-top: 1%;
+    color: darkgreen;
+    font-family: 'Aladin', cursive;
+    letter-spacing: 1px;
+    margin-left: 45%;
+}
+
+
+
+.panel-body{
+  margin-left: 1%;
+  margin-right: 2%;
+}
+thead{
+  background-color: rgb(85, 14, 14);
+  padding: 10px 5px 10px 5px;
+}
+table, td{
+  text-align: center;
+  align-items: center;
+  vertical-align: middle;
+}
+table, td, tr{
+  border: 1px solid rgb(163, 161, 161);
+  font-family: serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: large;
+}
+
+th{
+  text-transform: uppercase;
+  color: white;
+  font-family: Helvetica;
+  font-style: italic;
+  font-size: normal;
+  padding: 10px 10px 10px 10px;
+  border: 1px solid white;
+}
+td{
+  text-transform:none;
+  padding: 10px;
+}
+.accepted{
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgb(30, 116, 30);
+  padding: 5px 10px 5px 10px;
+  color: white;
+  font-weight: bolder;
+}
+.pending{
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgb(196, 137, 28);
+  padding: 5px 10px 5px 10px;
+  color: white;
+  font-weight: bolder;
+}
+.rejected{
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: red;
+  padding: 5px 10px 5px 10px;
+  color: white;
+  font-weight: bolder;
+}
+.date-cover
+{
+  border-radius: 10px;
+  background-color: rgb(14, 9, 58);
+  padding: 5px 10px 5px 10px;
+  color: white;
+  width: auto;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.headercolor
+{
+  background-color: rgb(3, 70, 3);
+}
+
+.btn{
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color:rgb(63, 3, 3);
+  padding: 5px 10px 5px 10px;
+  color: white;
+  font-weight: bolder;
+  float: right;
+  margin-right: 4%;
+}
+

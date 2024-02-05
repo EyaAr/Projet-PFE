@@ -1,0 +1,28 @@
+<app-header></app-header>
+<h2 style="text-align: center; font-family: 'Oswald', sans-serif;color: maroon; margin-top: 3%; margin-bottom: 4%;">Users List</h2>
+
+
+<div class="sign-up" style=" text-align: center; margin-top: 10px;"> <small
+    [routerLink]="['/registrationuser']" style="color: rgb(57, 2, 2); text-align: center; cursor: pointer;"><b>Add
+     New User Account</b></small></div>
+<div class="row">
+    <div  *ngFor="let user of users | async" class="col-4 card" id="bloodCards">
+        <div class="img-block">
+            <div class="circle">
+                <img *ngIf="user.gender === 'Male' || user.gender === 'male'"  class="bloodimg" [src]="'assets/img/maleuser.png'" width="120" height="120">
+                <img *ngIf="user.gender === 'Female' || user.gender === 'female'"  class="bloodimg" [src]="'assets/img/femaleuser.png'" width="120" height="120">
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="text"><b style="color: maroon;">username: {{user.username}} </b></div>
+            <div class="text"><b style="color: darkblue;">userid: {{user.userid}} </b></div>
+            <div class="text"><b style="color: maroon;">email: {{user.email}} </b></div>
+            <div class="text"><b style="color: maroon;">profession: {{user.profession}} </b></div>
+            <div class="text"><b style="color: maroon;">gender: {{user.gender}} </b></div>
+            <div class="text"><b style="color: maroon;">mobile: {{user.mobile}} </b></div>
+        </div>
+    </div>
+  </div>
+
+<br><br><br>
+<app-footer></app-footer>

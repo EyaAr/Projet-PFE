@@ -1,0 +1,145 @@
+<div class="wrapper">
+    <div class="page-header page-header-small">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8"
+            style="background-image: url('assets/img/35.jpg');">
+        </div>
+        <div class="container">
+            <div class="content-center">
+
+                <h3 class="title">VERMEG for Banking & Insurance Software</h3>
+
+                <div class="content">
+
+                    <div class="social-description">
+                        <h2 class=" card-title" *ngFor="let managers of managers | async">{{managers}}</h2>
+                        <p>Total Managers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="button-container">
+                <a href="https://www.vermeg.com" class="btn btn-primary btn-round btn-lg" title="web site">
+                    <i class="now-ui-icons objects_globe"></i>
+                </a>
+                <a href="https://twitter.com/vermeg" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip"
+                    title="Follow me on Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.facebook.com/Vermeg" class="btn btn-default btn-round btn-lg btn-icon"
+                    rel="tooltip" title="Follow me on Instagram">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+            </div>
+
+
+
+            <div class="section section-about-us">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 ml-auto mr-auto text-center">
+                            <h2 class="title">Want to work with us?</h2>
+                            <p class="description">Your project is very important to us.</p>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="card">
+                    <div *ngFor="let manager of managerlist | async" class="col-4 card" id="bloodCards">
+                        <div id="images">
+                            <div class="col-sm-4">
+                                <img *ngIf="manager.gender === 'Male' || manager.gender === 'male'"
+                                    src="assets/img/male.jpg" alt="Thumbnail Image" class="rounded-circle img-raised">
+                                <img *ngIf="manager.gender === 'Female' || manager.gender === 'female'"
+                                    src="assets/img/female.jpg" alt="Thumbnail Image" class="rounded-circle img-raised">
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <div class="text"><b style="color:  rgb(14, 1, 1)">manager ID : </b><b
+                                    style="color: rgb(119, 75, 75);"><small
+                                        class="date-cover">{{manager.managerid}}</small></b></div>
+                            <div class="text"><b style="color: rgb(14, 1, 1)">manager Name : </b><b
+                                    style="color:rgb(119, 75, 75);">
+                                    {{manager.managername}} </b></div>
+                            <div class="text"><b style="color:  rgb(14, 1, 1)">Email : </b><b
+                                    style="color:rgb(119, 75, 75);"> {{manager.email}} </b>
+                            </div>
+                            <div class="text"><b style="color:  rgb(14, 1, 1)">adresse : </b><b
+                                    style="color: rgb(119, 75, 75);"> {{manager.adresse}}
+                                </b></div>
+                            <div class="text"><b style="color:  rgb(14, 1, 1)">Gender : </b><b
+                                    style="color: rgb(119, 75, 75);"> {{manager.gender}}
+                                </b></div>
+                            <div class="text"><b style="color:  rgb(14, 1, 1)">Mobile : </b><b
+                                    style="color: rgb(119, 75, 75);"> {{manager.mobile}}
+                                </b></div>
+                            <div *ngIf="manager.status === 'accept'">
+                                <div style="color: rgb(51, 41, 41);" class="btn btn-simple btn-round btn-white btn-lg">
+                                    Approved manager</div>
+                            </div>
+                            <div *ngIf="manager.status === 'reject'">
+                                <div style="color: rgb(55, 18, 18);" class="btn btn-simple btn-round btn-white btn-lg">
+                                    Rejected</div>
+                            </div>
+                            <div *ngIf="manager.status === 'false'">
+                                <div style="color: rgb(93, 59, 59);" class="btn btn-simple btn-round btn-white btn-lg">
+                                    Approval Pending</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="section section-download" id="#download-section" data-background-color="black">
+        <div class="container">
+            <br>
+            <div class="row text-center mt-5">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <h5 class="description">For 20 years, we have evolved with our Clients and the Market, as a
+                        solution and service integrator. Now VERMEG is a key Partner for business and digital
+                        transformation in insurance and finance.
+                    </h5>
+                    <h4>Contact us on : communications@vermeg.com</h4>
+                </div>
+
+
+            </div>
+
+
+            <ng-template #classic let-c="close" let-d="dismiss">
+                <div class="modal-header justify-content-center">
+                    <button type="button" class="close" (click)="d('Cross click')">
+                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </button>
+                    <h4 class="title title-up">Chat</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
+                    </p>
+                </div>
+
+            </ng-template>
+            <footer class="footer" data-background-color="black">
+                <div class="container">
+                    <div class="copyright">
+                        &copy;
+                        {{data | date: 'yyyy'}}, Designed
+                        <a target="_blank"></a>And Coded by
+                        <a href="https://www.linkedin.com/in/eya-armaoui/" target="_blank">Armaoui Eya</a>.
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+
+</div>

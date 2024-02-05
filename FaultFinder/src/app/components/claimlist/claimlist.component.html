@@ -1,0 +1,81 @@
+<app-header></app-header>
+
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3 class="register-heading"><i class="fa fa-user-o"></i> Add New Claim</h3>
+                    <small class="text-danger"><b>{{msg}}</b></small>
+                    <form #claimform="ngForm" (ngSubmit)="addNewClaim()">
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <label>title : <b style="color:red;">*</b></label>
+                                <input type="text" class="form-control" placeholder="enter title" name="title"
+                                    [(ngModel)]="ClaimObj.title" required #title="ngModel"
+                                    [class.is-invalid]="title.invalid && title.touched">
+                                <small class="text-danger" [class.d-none]="title.valid || title.untouched"><b>required
+                                        field</b></small>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description : <b style="color:red;">*</b></label>
+                                <textarea type="text" rows="4" class="form-control" placeholder="enter description here"
+                                    name="description" [(ngModel)]="ClaimObj.description" required
+                                    #description="ngModel"
+                                    [class.is-invalid]="description.invalid && description.touched"></textarea>
+                                <small class="text-danger"
+                                    [class.d-none]="description.valid || description.untouched"><b>required
+                                        field</b></small>
+                            </div>
+                           
+                            <div class="col-md-6">
+                                <label>dateClaim : <b style="color:red;">*</b></label>
+                                <input type="date" class="form-control" placeholder="enter dateClaim" name="dateClaim"
+                                    [(ngModel)]="ClaimObj.dateClaim" required #dateClaim="ngModel"
+                                    [class.is-invalid]="dateClaim.invalid && dateClaim.touched">
+                                <small class="text-danger"
+                                    [class.d-none]="dateClaim.valid || dateClaim.untouched"><b>required
+                                        field</b></small>
+
+
+                            </div>
+
+                        </div>
+
+                        <button [disabled]="claimform.form.invalid" type="submit" class="btnRegister"><i
+                                class="fa fa-plus"></i> Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="text" style=" text-align: center; margin-top: 10px;"><b style="color: rgb(27, 25, 25);">Claims List</b>
+</div>
+
+<div class="row">
+    <div *ngFor="let claim of claims | async" class="col-4 card" id="bloodCards">
+        <div class="img-block">
+            <img [src]="'assets/img/alert.gif'" style="margin-left: 35%;" width="80" height="80"><br>
+        </div>
+        <div class="card-block">
+            <br>
+            <div class="text"><b style="color: maroon;">title: {{claim.title}} </b></div>
+            <div class="text"><b style="color: darkblue;">description: {{claim.description}} </b></div>
+            <div class="text"><b style="color: maroon;">dateClaim: {{claim.dateClaim}} </b></div>
+
+            <br><br>
+        </div>
+    </div>
+</div>
+
+
+
+
+<br><br><br>
+<app-footer></app-footer>

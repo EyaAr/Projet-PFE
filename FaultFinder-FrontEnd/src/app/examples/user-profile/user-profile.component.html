@@ -1,0 +1,174 @@
+<div class="wrapper">
+    <div class="page-header page-header-small" filter-color="orange">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8"
+            style="background-image: url('assets/img/35.jpg');">
+        </div>
+        <div class="container">
+            <div class="content-center">
+                <div *ngFor="let user of profileDetails | async" id="bloodCards">
+                    <div class="photo-container">
+                        <img *ngIf="user.gender === 'Male' || user.gender === 'male'" src="assets/img/male.jpg" alt="">
+                        <img *ngIf="user.gender === 'Female' || user.gender === 'female'" src="assets/img/female.jpg"
+                            alt="">
+                    </div>
+                    <h3 class="title"> User : {{user.username}}</h3>
+                    <p class="category">Id : {{user.userid}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+
+            <h3 class="title">About me</h3>
+            <div class="card">
+                <br><br><br>
+                <div *ngFor="let user of profileDetails | async" id="bloodCards">
+                    <div class="text"><b class="element" style="margin-left: 6%;"> Address : {{user.address}}</b>
+                    </div>
+                    <div class="text"><b class="element" style="margin-left: 6%;"> Mobile : {{user.mobile}}</b>
+                    </div>
+                    <div class="text"><b class="element" style="margin-left: 6%;">Gender : {{user.gender}}</b> </div>
+                    <div class="text"><b class="element" style="margin-left: 6%;">Email : {{user.email}}</b> </div>
+                    <div class="text"><b class="element" style="margin-left: 6%;">Email : {{user.profession}}</b> </div>
+                    <br><br><br><br>
+                </div>
+            </div>
+            <h3 class="title">Update User Profile</h3>
+
+            <small *ngIf="temp === false" style="font-weight: bold; text-align: right; color: rgb(70, 71, 70);"><b>Dear
+                    {{loggedUser}}, update your profile here</b></small>
+            <small *ngIf="temp === true" style="text-align: center; color: rgb(9, 61, 9);"><b>Profile Updated
+                    Successfully !!!</b></small>
+            <div class="card">
+                <br><br><br><br>
+                <div class="row">
+                    <div class="col-md-9 register-right">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <br><br>
+
+                                <form #Updateform="ngForm" style="margin-top: -15%;" (ngSubmit)="updateUserProfile()">
+                                    <div class="row register-form">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <input type="text" style="margin-left: 6%;"class="form-control" placeholder="user name *"
+                                                    name="username" [(ngModel)]="user.username" required
+                                                    #username="ngModel"
+                                                    [class.is-invalid]="username.invalid && username.touched">
+                                                <small class="text-danger"
+                                                    [class.d-none]="username.valid || username.untouched"><b>required
+                                                        field</b></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <select style="margin-left: 6%;" class="form-control" placeholder="gender *" name="usergender"
+                                                [(ngModel)]="user.gender" required #usergender="ngModel"
+                                                [class.is-invalid]="usergender.invalid && usergender.touched">
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                            </select>
+                                
+                                                <small class="text-danger"
+                                                    [class.d-none]="usergender.valid || usergender.untouched"><b>required
+                                                        field</b></small>
+                                            </div>
+                                           
+                                            <div class="form-group">
+                                                <input type="text" style="margin-left: 6%;"class="form-control" placeholder="your profession *"
+                                                    name="userprofession" [(ngModel)]="user.profession" required
+                                                    #userprofession="ngModel"
+                                                    [class.is-invalid]="userprofession.invalid && userprofession.touched">
+                                                <small class="text-danger"
+                                                    [class.d-none]="userprofession.valid || userprofession.untouched"><b>required
+                                                        field</b></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password"style="margin-left: 6%;" class="form-control" placeholder="Password *"
+                                                    name="pwd" [(ngModel)]="user.password" required
+                                                    #userpassword="ngModel"
+                                                    [class.is-invalid]="userpassword.invalid && userpassword.touched">
+                                                <div
+                                                    *ngIf="userpassword.errors && userpassword.invalid && userpassword.touched">
+                                                    <small class="text-danger"
+                                                        *ngIf="userpassword.errors.required"><b>required
+                                                            field</b></small>
+                                                </div>
+                                                <small style="color: gray; font-size: 10px;margin-left: 6%;">atleast one uppercase,
+                                                    numeric digit, special character, length of 6-20</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="email address *"
+                                                    name="useremail" [(ngModel)]="user.email" required
+                                                    pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #useremail="ngModel"
+                                                    [class.is-invalid]="useremail.invalid && useremail.touched">
+                                                <div
+                                                    *ngIf="useremail.errors && (useremail.invalid && useremail.touched)">
+                                                    <small class="text-danger"
+                                                        *ngIf="useremail.errors.required"><b>required
+                                                            field</b></small>
+                                                    <small class="text-danger"
+                                                        *ngIf="useremail.errors.pattern"><b>Invalid
+                                                            email
+                                                            Id</b></small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="tel" maxlength="8" minlength="8" class="form-control"
+                                                    placeholder="mobile *" name="usermobile" [(ngModel)]="user.mobile"
+                                                    required #usermobile="ngModel"
+                                                    [class.is-invalid]="usermobile.invalid && usermobile.touched">
+                                                <small class="text-danger"
+                                                    [class.d-none]="usermobile.valid || usermobile.untouched"><b>required
+                                                        field</b></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="address *"
+                                                    name="useraddress" [(ngModel)]="user.address" required
+                                                    #useraddress="ngModel"
+                                                    [class.is-invalid]="useraddress.invalid && useraddress.touched">
+                                                <small class="text-danger"
+                                                    [class.d-none]="useraddress.valid || useraddress.untouched"><b>required
+                                                        field</b></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control"
+                                                    placeholder="Confirm Password *" name="ConfirmPassword"
+                                                    (ngModel)="user.password" required #userconfirmPassword="ngModel"
+                                                    [class.is-invalid]="userconfirmPassword.invalid && userconfirmPassword.touched">
+                                                <small class="text-danger"
+                                                    [class.d-none]="(userconfirmPassword.value == userpassword.value) || userconfirmPassword.untouched"><b>password
+                                                        not matched</b></small>
+                                            </div>
+
+                                        </div>
+                                        <button [disabled]="Updateform.form.invalid" type="submit"style="margin-left: 6%;"
+                                            class="btn btn-primary btn-round btn-lg">Update
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Designed And
+                <a target="_blank"></a>. Coded by
+                <a href="https://www.linkedin.com/in/eya-armaoui/" target="_blank">Armaoui Eya</a>.
+            </div>
+        </div>
+    </footer>
+</div>

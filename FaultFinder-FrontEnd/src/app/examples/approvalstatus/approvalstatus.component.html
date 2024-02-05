@@ -1,0 +1,104 @@
+<div class="wrapper">
+  <div class="page-header page-header-small">
+    <div class="page-header-image rellax-header" data-rellax-speed="-8"
+      style="background-image: url('assets/img/35.jpg');">
+    </div>
+
+  </div>
+  <div class="section section-about-us">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">Want to work with us?</h2>
+          <p class="description">Your project is very important to us.</p>
+        </div>
+      </div>
+    </div>
+    <br><br><br><br>
+    <div class="panel panel-primary" id="managerapproval">
+     
+
+
+      <div class="col-md-10 ml-auto col-xl-6 mr-auto">
+        <div *ngIf="currRole === 'manager' || currRole === 'MANAGER'" class="title">Your Approval Status
+          <div *ngFor="let manager of approval | async">
+            <div *ngIf="manager.status === 'accept'">
+              <h2><small style="color: rgb(18, 17, 17);">(Verified & Accepted) ID : <small
+                    class="date-cover">{{manager.managerid}}</small></small></h2>
+            </div>
+            <div *ngIf="manager.status === 'false'">
+              <h2><small style="color: rgb(110, 24, 24);">(Not yet Verified)</small></h2>
+            </div>
+            <div *ngIf="manager.status === 'reject'">
+              <h2><small style="color: rgb(50, 14, 14);">(Verified & Rejected)</small></h2>
+            </div>
+          </div>
+
+        </div>
+        <!-- Tabs with Background on Card -->
+        <div class="card">
+          <div class="nav-tabs-navigation" data-tabs-color="orange">
+            <table cass="table table-bordered">
+              <thead class="headercolor">
+                <tr>
+                  <th>Idendity</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Adresse</th>
+                  <th>mobile</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let manager of approval | async">
+                  <td>{{manager.managerid}}</td>
+                  <td>{{manager.managername}}</td>
+                  <td>{{manager.email}}</td>
+                  <td>{{manager.adresse}}</td>
+                  <td>{{manager.mobile}} </td>
+
+                  <td>
+                    <div *ngIf="currRole === 'manager' || currRole === 'MANAGER' && manager.email === loggedUser">
+                      <div *ngIf="manager.status === 'accept'" >
+                        <div style="color: rgb(51, 41, 41);"class="btn btn-simple btn-round btn-white btn-lg">Accepted</div>
+                      </div>
+
+
+                      <div *ngIf="manager.status === 'false'">
+                      <div style="color: rgb(93, 59, 59);"class="btn btn-simple btn-round btn-white btn-lg">Pending</div>
+                      </div>
+
+
+                      <div *ngIf="manager.status === 'reject'">
+                        <div style="color: rgb(55, 18, 18);"class="btn btn-simple btn-round btn-white btn-lg">Rejected</div>
+                      </div>
+
+                      
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+        <!-- End Tabs on plain Card -->
+      </div>
+
+      
+
+    </div>
+    <br><br><br><br><br><br><br><br>
+
+
+    <footer class="footer footer-default">
+      <div class="container">
+        <div class="copyright">
+          &copy;
+          {{data | date: 'yyyy'}}, Designed And
+          <a target="_blank"></a>. Coded by
+          <a href="https://www.linkedin.com/in/eya-armaoui/" target="_blank">Armaoui Eya</a>.
+        </div>
+      </div>
+    </footer>
+  </div>

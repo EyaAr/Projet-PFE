@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+
+<div class="text" style=" text-align: center; margin-top: 10px;"><b style="color: rgb(27, 25, 25);">DataBases List</b>
+</div>
+
+
+
+<div class="row">
+    <div *ngFor="let data of datas | async" class="col-4 card" id="bloodCards">
+        <div class="img-block">
+            <img [src]="'assets/img/d.gif'" style="margin-left: 35%;" width="150" height="150"><br>
+        </div>
+        <div class="card-block">
+
+            <br>
+            <div class="text"><b style="color: maroon;">url: {{data.url}} </b></div>
+            <div class="text"><b style="color: darkblue;">username: {{data.username}} </b></div>
+            <div class="text"><b style="color: maroon;">password: {{data.password}} </b></div>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br>
+<app-footer></app-footer>

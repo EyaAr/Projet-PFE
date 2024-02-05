@@ -1,0 +1,119 @@
+<app-header></app-header>
+
+<div class="panel panel-primary" id="managerapproval">
+  <div class="panel-heading">
+    <h2 *ngIf="currRole === 'manager' || currRole === 'MANAGER'"
+      style="text-align: center; font-family: 'Oswald', sans-serif;color: maroon; margin-top: 3%; margin-bottom: 4%;">
+      Your Approval Status
+      <div *ngFor="let manager of approval | async" style="margin-top: 1%;">
+        <div *ngIf="manager.status === 'accept'">
+          <h2><small style="color: maroon;">(Verified & Accepted) ID : <small
+                class="date-cover">{{manager.managerid}}</small></small></h2>
+        </div>
+        <div *ngIf="manager.status === 'false'">
+          <h2><small style="color: maroon;">(Not yet Verified)</small></h2>
+        </div>
+        <div *ngIf="manager.status === 'reject'">
+          <h2><small style="color: maroon;">(Verified & Rejected)</small></h2>
+        </div>
+      </div>
+    </h2>
+  </div>
+  <div class="panel-body">
+    <table cass="table table-bordered">
+      <thead class="headercolor">
+        <tr>
+          <th></th>
+          <th>Idendity</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Adresse</th>
+          <th>mobile</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let manager of approval | async">
+          <td><img *ngIf="manager.gender === 'Male' || manager.gender === 'male'" class="bloodimg"
+              [src]="'assets/img/maleprofessor.png'" width="80" height="80">
+            <img *ngIf="manager.gender === 'Female' || manager.gender === 'female'" class="bloodimg"
+              [src]="'assets/img/femaleprofessor.png'" width="80" height="80">
+          </td>
+          <td>{{manager.managerid}}</td>
+          <td>{{manager.managername}}</td>
+          <td>{{manager.email}}</td>
+          <td>{{manager.adresse}}</td>
+          <td>{{manager.mobile}} </td>
+
+          <td>
+            <div *ngIf="currRole === 'manager' || currRole === 'MANAGER' && manager.email === loggedUser">
+              <div *ngIf="manager.status === 'accept'" class="accepted">Accepted</div>
+              <div *ngIf="manager.status === 'false'" class="pending">Pending</div>
+              <div *ngIf="manager.status === 'reject'" class="rejected">Rejected</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br><br><br><br>
+
+<div class="panel panel-primary" id="adminapproval">
+  <div class="panel-heading">
+    <h2 *ngIf="currRole === 'admin' || currRole === 'ADMIN'"
+      style="text-align: center; font-family: 'Oswald', sans-serif;color: maroon; margin-top: 3%; margin-bottom: 3%;">
+      Approve Manager Here
+    </h2>
+  </div>
+  <div class="panel-body">
+    <table cass="table table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Idendity</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Adresse</th>
+          <th>mobile</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let manager of managerlist | async">
+          <td><img *ngIf="manager.gender === 'Male' || manager.gender === 'male'" class="bloodimg"
+              [src]="'assets/img/maleprofessor.png'" width="80" height="80">
+            <img *ngIf="manager.gender === 'Female' || manager.gender === 'female'" class="bloodimg"
+              [src]="'assets/img/femaleprofessor.png'" width="80" height="80">
+          </td>
+          <td>{{manager.managerid}}</td>
+          <td>{{manager.managername}}</td>
+          <td>{{manager.email}}</td>
+          <td>{{manager.adresse}}</td>
+          <td>{{manager.mobile}} </td>
+          <td>
+            <div *ngIf="loggedUser === 'admin@gmail.com' && manager.status === 'false'">
+              <button (click)="acceptRequest(manager.email)" id="acceptbtn" value="manager.email" value="Accept"
+                style="margin-bottom: 5px;" class="accepted">Accept</button><br>
+              <button (click)="rejectRequest(manager.email)" id="rejectbtn" value="manager.email" value="Reject"
+                class="rejected">Reject</button>
+              <div id="acceptedbtn" class="accepted" style="display: none;">Accepted</div>
+              <div id="rejectedbtn" class="rejected" style="display: none;">Rejected</div>
+            </div>
+            <div *ngIf="loggedUser === 'admin@gmail.com' && manager.status === 'accept'">
+              <div class="accepted">Accepted</div>
+            </div>
+            <div *ngIf="loggedUser === 'admin@gmail.com' && manager.status === 'reject'">
+              <div class="rejected">Rejected</div>
+            </div>
+            <div *ngFor="let details of responses | async"></div>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+<app-footer></app-footer>

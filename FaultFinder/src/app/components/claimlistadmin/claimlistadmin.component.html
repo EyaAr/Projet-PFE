@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+
+
+<div #contentToPrint>
+    <div class="dashboard-card" style="background-color: white; box-shadow: 4px 4px 25px 5px gray;">
+        <br>
+        <div class=" card-header">
+            <h4 class="sidebar-text">Claims List</h4>  
+          </div>
+        <h5 class="card-category" style=" text-align: center; margin-top: 100px;">
+            <div class="panel-body" style=" text-align: center; margin-left: 200px;">
+
+                <table cass="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Idendity</th>
+                            <th>title</th>
+                            <th>description</th>
+                            <th>date Claim</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let claim of claims | async">
+
+                            <td>{{claim.id}}</td>
+                            <td>{{claim.title}}</td>
+                            <td>{{claim.description}}</td>
+                            <td>{{claim.dateClaim}}</td>
+                            <td>
+                                <button class="btn btn-danger" (click)="deleteClaim(+claim.id)">Delete</button>
+                               
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </h5>
+        <br><br><br><br>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br>
+    <app-footer></app-footer>

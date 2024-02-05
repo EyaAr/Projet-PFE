@@ -1,0 +1,101 @@
+<app-header></app-header>
+
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='fa fa-bars'></i>
+    <div class="logo_name"><img [src]="'assets/img/male.png'" width="55" height="50"> USER </div>
+    <i class='fa' id="btn"></i>
+  </div>
+  <ul class="nav-list">
+    <li [routerLink]="['/edituserprofile']">
+      <a>
+        <i class='fa fa-edit'></i>
+        <span class="links_name">Edit Profile</span>
+      </a>
+      <span class="tooltip">Edit Profile</span>
+    </li>
+
+
+    <li [routerLink]="['/userlist']">
+      <a>
+        <i class='fa fa-user'></i>
+        <span class="links_name">Users</span>
+      </a>
+      <span class="tooltip">Users</span>
+    </li>
+    <li [routerLink]="['/managerlist']">
+      <a>
+        <i class='fa fa-book'></i>
+        <span class="links_name">Managers</span>
+      </a>
+      <span class="tooltip">Managers</span>
+    </li>
+    <li style="align-content: center;" class="profile">
+      <div class="profile-details">
+        <div class="name_job">
+          <div style="align-content: center; font-weight: bolder;" class="name">{{loggedUser}}</div>
+          <div class="job" style="align-content: center; font-weight: bolder;">Role : {{currRole}}</div>
+        </div>
+      </div>
+      <i class='bx bx-log-out' id="log_out"></i>
+    </li>
+    <li [routerLink]="['/companyList']">
+      <a>
+        <i class='fa fa-book'></i>
+        <span class="links_name">Companys</span>
+      </a>
+      <span class="tooltip">Companys</span>
+    </li>
+    <li [routerLink]="['/dataBaselist']">
+      <a>
+        <i class='fa fa-book'></i>
+        <span class="links_name">Databases</span>
+      </a>
+      <span class="tooltip">Databases</span>
+    </li>
+    <li [routerLink]="['/claimlist']">
+      <a>
+        <i class='fa fa-list'></i>
+        <span class="links_name">Claims</span>
+      </a>
+      <span class="tooltip">Claims</span>
+    </li>
+  </ul>
+</div>
+
+<div class="home-section">
+  <div class="container">
+    <div class="row">
+      <div class="headtxt"
+        style="color: maroon; font-weight: bolder; letter-spacing: 1px; font-size: 40px; margin: 0% 0% 1% 20%;">
+        <b>Welcome to User Dashboard</b>
+      </div>
+
+    </div>
+
+
+    <div class="container">
+      <div class="col-md-3 offset-md-3">
+        <ng-container *ngFor="let message of messages">
+          <div class="message" [ngClass]="{ 'from': message.author === 'bot',
+      'to': message.author === 'user' }">
+            {{ message.content }}
+          </div>
+        </ng-container>
+        <label *ngIf="messages.length == 0; else dialogInfo" for="nameField">Your message</label>
+        <input [(ngModel)]="value" (keyup.enter)="sendMessage()" type="text">
+        <button (click)="sendMessage()">Send</button>
+        <ng-template #dialogInfo>
+          <span [className]="'float-right'">Total messages: {{messages.length}}</span>
+        </ng-template>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
+
+<br><br><br><br>
+<app-footer></app-footer>
